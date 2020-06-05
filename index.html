@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+
+    <title>Listagem</title>
+
+    <script>
+        let _codigo = 1; // variavel será utilizada para simular primary key auto increment
+
+        function cadastrar(event) {
+            event.preventDefault();
+
+            const tbody = document.querySelector("tbody");
+            const tr = document.createElement("tr");
+
+            document.getElementById("tabela").appendChild(tr);
+
+            const tdCodigo = document.createElement("td");
+
+            _codigo++;
+
+            const codigo = document.createTextNode(_codigo);
+            tdCodigo.appendChild(codigo);
+
+            const tdNome = document.createElement("td");
+            const nome = document.createTextNode(document.getElementById("nome").value.trim());
+            tdNome.appendChild(nome);
+
+            tr.appendChild(tdCodigo);
+            tr.appendChild(tdNome);
+
+            tbody.appendChild(tr);
+
+            document.getElementById("nome").value = "";
+        }            
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Cadastro</h1>
+        <form>
+            <!-- <div class="form-group">
+                <label for="codigo">Código</label>
+                <input type="number" class="form-control" id="codigo">
+            </div> -->
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome">
+                <small class="form-text text-muted">Código gerado automaticamente simulando uma primary key auto
+                    increment</small>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="cadastrar(event)">Cadastrar</button>
+        </form>
+
+        <hr />
+
+        <h1>Nomes</h1>
+        <table class="table table-striped" id="tabela">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Código 1</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+
+</html>
